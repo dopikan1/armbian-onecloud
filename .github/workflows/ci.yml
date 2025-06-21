@@ -165,6 +165,7 @@ jobs:
               BOARD=onecloud \
               BRANCH=${{ matrix.BRANCH }} \
               EXPERT=yes \
+              ROOTFS_TYPE=btrfs \ 
               USE_CCACHE=no
           sudo chown $(id -u):$(id -g) -R output/
 
@@ -246,7 +247,7 @@ jobs:
               SKIP_EXTERNAL_TOOLCHAINS=yes \
               CLEAN_LEVEL= \
               USE_CCACHE=no \
-              FILESYSTEM=btrfs \ 
+              ROOTFS_TYPE=btrfs \ 
               COMPRESS_OUTPUTIMAGE=img
           sudo chown $(id -u):$(id -g) -R output/
 
