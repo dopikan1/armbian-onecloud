@@ -146,7 +146,7 @@ jobs:
         if: ${{ env.PATCHES }}
         run: |
           echo "::group::Download"
-          curl -L -O "https://github.com/armbian/build/pull/v25.05/{${PATCHES}}.patch"
+          curl -L -O "https://github.com/armbian/build/pull/{${PATCHES}}.patch"
           echo "::endgroup::"
 
           for file in *.patch; do
