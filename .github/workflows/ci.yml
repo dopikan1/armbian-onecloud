@@ -165,7 +165,7 @@ jobs:
               BOARD=onecloud \
               BRANCH=${{ matrix.BRANCH }} \
               EXPERT=yes \
-              FILESYSTEM=btrfs \  # Added to instruct the build to use Btrfs for the root filesystem
+              FILESYSTEM=btrfs \ 
               USE_CCACHE=no
           sudo chown $(id -u):$(id -g) -R output/
 
@@ -247,7 +247,7 @@ jobs:
               SKIP_EXTERNAL_TOOLCHAINS=yes \
               CLEAN_LEVEL= \
               USE_CCACHE=no \
-              FILESYSTEM=btrfs \  # Added to instruct the build to use Btrfs for the root filesystem
+              FILESYSTEM=btrfs \ 
               COMPRESS_OUTPUTIMAGE=img
           sudo chown $(id -u):$(id -g) -R output/
 
