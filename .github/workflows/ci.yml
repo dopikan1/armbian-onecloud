@@ -17,8 +17,7 @@ env:
   ARMBIAN_REPO: armbian/build
   ARMBIAN_REF: main
   PATCHES: 4077,5076
-  PATCHES_DISABLED: 5082
-
+  PATCHES_DISABLED: 0052,5082  # Disable the problematic patch and any other as needed
 permissions:
   contents: write
 
