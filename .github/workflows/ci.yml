@@ -165,6 +165,7 @@ jobs:
               BOARD=onecloud \
               BRANCH=${{ matrix.BRANCH }} \
               EXPERT=yes \
+              FILESYSTEM=btrfs \  # Added to instruct the build to use Btrfs for the root filesystem
               USE_CCACHE=no
           sudo chown $(id -u):$(id -g) -R output/
 
@@ -191,25 +192,10 @@ jobs:
         BRANCH:
           - current
         RELEASE:
-          # - focal # Ubuntu 20.04 LTS
-          # - jammy # Ubuntu 22.04 LTS
-          - noble # Ubuntu 24.04 LTS
-          - oracular # Ubuntu 24.10
-          - plucky # Ubuntu 25.04
-          # - buster # Debian 10
-          # - bullseye # Debian 11
           - bookworm # Debian 12
-          - trixie # Debian 13
-          - sid # Debian unstable
         TYPE:
           - minimal
           - cli
-          - desktop
-        include:
-          - TYPE: desktop
-            DESKTOP_ENVIRONMENT: xfce
-            DESKTOP_ENVIRONMENT_CONFIG_NAME: config_base
-            DESKTOP_APPGROUPS_SELECTED: ""
 
     steps:
       - name: Import env
@@ -261,13 +247,15 @@ jobs:
               SKIP_EXTERNAL_TOOLCHAINS=yes \
               CLEAN_LEVEL= \
               USE_CCACHE=no \
+              FILESYSTEM=btrfs \  # Added to instruct the build to use Btrfs for the root filesystem
               COMPRESS_OUTPUTIMAGE=img
           sudo chown $(id -u):$(id -g) -R output/
 
+
       - name: Install Dependents
         run: |
-          sudo apt install img2simg
-
+          sudo apt-get update
+          sudo apt install -y img2simg btrfs-progs
           ver="v0.3.1"
           curl -L -o ./AmlImg https://github.com/hzyitc/AmlImg/releases/download/$ver/AmlImg_${ver}_linux_amd64
           chmod +x ./AmlImg
