@@ -191,9 +191,8 @@ jobs:
         BRANCH:
           - current
         RELEASE:
-          - bookworm # Debian 12
+          - trixie
         TYPE:
-          - minimal
           - cli
 
     steps:
