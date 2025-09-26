@@ -11,14 +11,13 @@ on:
 env:
   SCRIPT_REPO: ${{ github.repository }}
   SCRIPT_REF: ${{ github.ref_name }}
-  UBOOT_REPO: hzyitc/u-boot-onecloud
+  UBOOT_REPO: soulteary/onecloud-u-boot
   UBOOT_RELEASE: latest
   UBOOT_BURNIMG: eMMC.burn.img
   ARMBIAN_REPO: armbian/build
-  ARMBIAN_REF: v25.08
+  ARMBIAN_REF: v25.11.0-trunk.234
   PATCHES: 4077,5076
-  PATCHES_DISABLED: 5082
-  
+
 permissions:
   contents: write
 
